@@ -7,11 +7,11 @@ namespace tf_grafos.classes
     {
         private int id;
         public List<Aresta> arestas = new List<Aresta>();
-        private int cor;
-        private Vertice pai;
-        public List<Vertice> filhos = new List<Vertice>();
-        private int descoberta;
-        private int termino;
+        //private int cor;
+        //private Vertice pai;
+        //public List<Vertice> filhos = new List<Vertice>();
+        //private int descoberta;
+        //private int termino;
 
         public Vertice(int id)
         {
@@ -41,58 +41,58 @@ namespace tf_grafos.classes
         /// 0 = branco, 1 = cinza 2 = preto
         /// </summary>
         /// <returns></returns>
-        public int GetCor()
-        {
-            return this.cor;
-        }
+        //public int GetCor()
+        //{
+        //    return this.cor;
+        //}
 
-        public void SetCor(int cor)
-        {
-            if (cor == 0 || cor == 1 || cor == 2)
-                this.cor = cor;
-            else
-                cor = 0;
-        }
+        //public void SetCor(int cor)
+        //{
+        //    if (cor == 0 || cor == 1 || cor == 2)
+        //        this.cor = cor;
+        //    else
+        //        cor = 0;
+        //}
 
-        public Vertice GetPai()
-        {
-            return this.pai;
-        }
+        //public Vertice GetPai()
+        //{
+        //    return this.pai;
+        //}
 
-        public void SetPai(Vertice v)
-        {
-            this.pai = v;
-        }
+        //public void SetPai(Vertice v)
+        //{
+        //    this.pai = v;
+        //}
 
-        public List<Vertice> GetFilhos()
-        {
-            return this.filhos;
-        }
+        //public List<Vertice> GetFilhos()
+        //{
+        //    return this.filhos;
+        //}
 
-        public void SetFilhos(List<Vertice> v)
-        {
-            this.filhos = v;
-        }
+        //public void SetFilhos(List<Vertice> v)
+        //{
+        //    this.filhos = v;
+        //}
 
-        public int GetDescoberta()
-        {
-            return this.descoberta;
-        }
+        //public int GetDescoberta()
+        //{
+        //    return this.descoberta;
+        //}
 
-        public void SetDescoberta(int u)
-        {
-            this.descoberta = u;
-        }
+        //public void SetDescoberta(int u)
+        //{
+        //    this.descoberta = u;
+        //}
 
-        public int GetTermino()
-        {
-            return this.termino;
-        }
+        //public int GetTermino()
+        //{
+        //    return this.termino;
+        //}
 
-        public void SetTermino(int u)
-        {
-            this.termino = u;
-        }
+        //public void SetTermino(int u)
+        //{
+        //    this.termino = u;
+        //}
 
         public Aresta GetMenorArestaDisponivel()
         {

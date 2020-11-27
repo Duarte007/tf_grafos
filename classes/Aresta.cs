@@ -5,39 +5,27 @@ namespace tf_grafos.classes
     public class Aresta : IDados
     {
         //private int id;
-        private int peso;
-        private int direcao;
         private Vertice verticeInicial;
         private Vertice verticeFinal;
-        private bool emUso;
+        private int cor; //pode ser string, mas acho q com int vai ser mais de boa
+        private bool emUso; //não sei se vamos precisar, mas deixei ai
 
-        public Aresta(int peso, int direcao, Vertice vI, Vertice vF)
+        public Aresta(Vertice vI, Vertice vF)
         {
-            this.peso = peso;
-            this.direcao = direcao;
             this.verticeInicial = vI;
             this.verticeFinal = vF;
             this.emUso = false;
         }
-        public int GetPeso()
+        public int GetCor()
         {
-            return peso;
+            return cor;
         }
 
-        public void SetPeso(int peso)
+        public void SetCor(int cor)
         {
-            this.peso = peso;
+            this.cor = cor;
         }
-
-        public int GetDirecao()
-        {
-            return direcao;
-        }
-        public void SetDirecao(int direcao) //somente para grafos dirigidos
-        {
-            this.direcao = direcao;
-        }
-
+               
         public Vertice GetVerticeInicial()
         {
             return this.verticeInicial;
