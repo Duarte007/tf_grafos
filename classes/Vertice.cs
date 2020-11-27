@@ -7,6 +7,9 @@ namespace tf_grafos.classes
     {
         private int id;
         public List<Aresta> arestas = new List<Aresta>();
+        private int período; //0 ao 8 e períodos iguais não podem ter cores de arestas iguais. 0 são os prof 
+        //somente os professores terão mais de uma aresta. Elas não podem ter cores repetidas, mas professores diferentes terão cores de arestas iguais
+
         //private int cor;
         //private Vertice pai;
         //public List<Vertice> filhos = new List<Vertice>();
@@ -37,6 +40,17 @@ namespace tf_grafos.classes
         {
             arestas.Add(a);
         }
+
+        public int getPeriodo()
+        {
+            return this.período;
+        }
+
+        public void setPeriodo(int periodo)
+        {
+            this.período = periodo;
+        }
+
         /// <summary>
         /// 0 = branco, 1 = cinza 2 = preto
         /// </summary>

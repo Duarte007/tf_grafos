@@ -8,6 +8,7 @@ namespace tf_grafos.classes
         private Vertice verticeInicial;
         private Vertice verticeFinal;
         private int cor; //pode ser string, mas acho q com int vai ser mais de boa
+        //ai precisamos só especificar 1= seg1, 2 = seg2, 3 = ter1...
         private bool emUso; //não sei se vamos precisar, mas deixei ai
 
         public Aresta(Vertice vI, Vertice vF)
@@ -25,7 +26,7 @@ namespace tf_grafos.classes
         {
             this.cor = cor;
         }
-               
+
         public Vertice GetVerticeInicial()
         {
             return this.verticeInicial;
