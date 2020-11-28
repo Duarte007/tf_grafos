@@ -7,8 +7,8 @@ namespace tf_grafos.classes
     {
         private int id;
         public List<Aresta> arestas = new List<Aresta>();
-        private int período; //0 ao 8 e períodos iguais não podem ter cores de arestas iguais. 0 são os prof 
-        //somente os professores terão mais de uma aresta. Elas não podem ter cores repetidas, mas professores diferentes terão cores de arestas iguais
+        private Materia materia;
+        private Professor professor;
 
         //private int cor;
         //private Vertice pai;
@@ -16,9 +16,16 @@ namespace tf_grafos.classes
         //private int descoberta;
         //private int termino;
 
-        public Vertice(int id)
+        public Vertice(int id, Materia materia)
         {
             this.id = id;
+            this.materia = materia;
+        }
+
+        public Vertice(int id, Professor professor)
+        {
+            this.id = id;
+            this.professor = professor;
         }
 
         public int GetId()
@@ -39,16 +46,6 @@ namespace tf_grafos.classes
         public void SetArestas(Aresta a)
         {
             arestas.Add(a);
-        }
-
-        public int getPeriodo()
-        {
-            return this.período;
-        }
-
-        public void setPeriodo(int periodo)
-        {
-            this.período = periodo;
         }
 
         /// <summary>
@@ -107,40 +104,6 @@ namespace tf_grafos.classes
         //{
         //    this.termino = u;
         //}
-
-        public Aresta GetMenorArestaDisponivel()
-        {
-            Aresta menorAresta = null;
-            int menorPeso = System.Int32.MaxValue;
-            foreach (Aresta aresta in arestas)
-            {
-                if (aresta.GetPeso() < menorPeso && !aresta.GetEmUso())
-                {
-                    menorPeso = aresta.GetPeso();
-                    menorAresta = aresta;
-                }
-                else if (aresta.GetPeso() == menorPeso && !aresta.GetEmUso())
-                {
-                    if (((aresta.GetVerticeInicial().GetId() + aresta.GetVerticeFinal().GetId())
-                        < (menorAresta.GetVerticeInicial().GetId() + menorAresta.GetVerticeFinal().GetId())))
-                    {
-                        menorPeso = aresta.GetPeso();
-                        menorAresta = aresta;
-                    }
-                    else if (((aresta.GetVerticeInicial().GetId() + aresta.GetVerticeFinal().GetId())
-                        == (menorAresta.GetVerticeInicial().GetId() + menorAresta.GetVerticeFinal().GetId())))
-                    {
-                        if (aresta.GetVerticeFinal().GetId() < menorAresta.GetVerticeFinal().GetId())
-                        {
-                            menorPeso = aresta.GetPeso();
-                            menorAresta = aresta;
-                        }
-                    }
-                }
-            }
-
-            return menorAresta;
-        }
 
     }
 }
