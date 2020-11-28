@@ -4,13 +4,15 @@ namespace tf_grafos.classes
 {
     public class Horario
     {
-        int id;
-        DayOfWeek diaSemana;
-        TimeSpan horario;
+        public int id;
+        public DayOfWeek diaSemana;
+        public TimeSpan horario;
+        public Boolean emUso;
         public Horario(int id, int diaSemana, TimeSpan horario){
             this.id = id;
             this.diaSemana = this.getDayOfWeek(diaSemana);
             this.horario = horario;
+            this.emUso = false;
         }
 
         private DayOfWeek getDayOfWeek(int diaSemana){
@@ -29,6 +31,14 @@ namespace tf_grafos.classes
                     return DayOfWeek.Saturday;
             }
             return DayOfWeek.Monday;
+        }
+
+        public Boolean getUso(){
+            return emUso;
+        }
+
+        public void setUso(Boolean estado){
+            this.emUso = estado;
         }
     }
 }

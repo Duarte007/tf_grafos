@@ -49,6 +49,39 @@ namespace tf_grafos.classes
             this.idGrafo = id;
         }
 
+        public void colorirArestas(List<Horario> horarios){
+            Horario horaioDisponivel = null;
+            // percorre os 8 semestres
+            for(int i = 1 ; i <= 8 ; i++){
+                // filtra os vertices que sao materias por semestre
+                List<Vertice> verticeMateriasPeriodo = this.vertices.FindAll(vertice => vertice.getProfessor() == null && vertice.getMateria().getPeriodo() == i);
+                verticeMateriasPeriodo.ForEach(materiaPeriodo => {
+                    // pra cara materia do semestre, que e um vertice, pegamos sua aresta.
+                    // como o vertice de materia nao repete, só tem uma aresta
+                    materiaPeriodo.getArestas().ForEach( aresta => {
+
+                        horaioDisponivel = horarios.Find(horario => horario.emUso == false);
+                        // esse loop verifica se o horario esta em conflito atraves do professor
+                        do {
+                            if(horaioDisponivel.emUso)
+                                horaioDisponivel = horarios.Find(horario => horario.emUso == false);
+                            // percorre as arestas do vertice inicial que é o professor
+                            aresta.getVerticeInicial().getArestas().ForEach(aresta => {
+                                if(aresta.getCor() == horaioDisponivel.id){
+                                    horaioDisponivel.emUso = true;
+                                }
+                            });
+                        } while(horaioDisponivel.emUso);
+
+                        aresta.setCor(horaioDisponivel.id);
+                        horaioDisponivel.emUso = true;
+                    });
+                });
+                horarios.ForEach(horario => horario.emUso = false);
+            }
+
+        }
+
 
     }
 }

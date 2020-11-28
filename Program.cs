@@ -12,9 +12,13 @@ namespace tf_grafos
         static List<Professor> professores = new List<Professor>();
         static List<Vertice> vertices = new List<Vertice>();
         static List<Aresta> arestas = new List<Aresta>();
+        static List<Horario> horarios = new List<Horario>();
+        static Grafo grade = null;
         static void Main(string[] args)
         {
+            carregaArquivoHorarios();
             carregaArquivoGrade();
+            mostrarGrade();
         }
 
         static void carregaArquivoGrade() {
@@ -30,6 +34,8 @@ namespace tf_grafos
                         int periodo, count = 0;
                         Professor professor = null, professorFiltrado = null;
                         Materia materia = null;
+                        Aresta aresta = null;
+                        Vertice verticeProfessor = null, verticeMateria = null;
                         Random randNum = new Random();
                         // Lê linha por linha
                         while ((linha = sr.ReadLine()) != null)
@@ -44,16 +50,25 @@ namespace tf_grafos
                             if(professorFiltrado == null){
                                 professor = new Professor(count, nomeProfessor);
                                 professores.Add(professor);
-                                vertices.Add(new Vertice(randNum.Next(), professor));
+                                verticeProfessor = new Vertice(randNum.Next(), professor);
+                                vertices.Add(verticeProfessor);
+                            } else {
+                                verticeProfessor = new Vertice(randNum.Next(), professorFiltrado);
                             }
 
                             materia = new Materia(count, nomeMateria, periodo, professor);
                             materias.Add(materia);
-                            vertices.Add(new Vertice(randNum.Next(), materia));
-
+                            verticeMateria = new Vertice(randNum.Next(), materia);
+                            vertices.Add(verticeMateria);
+                            aresta = new Aresta(verticeProfessor, verticeMateria);
+                            verticeProfessor.setAresta(aresta);
+                            verticeMateria.setAresta(aresta);
+                            arestas.Add(aresta);
                             Console.WriteLine(linha);
                         }
                     }
+                    grade = new Grafo(vertices, arestas);
+                    grade.colorirArestas(horarios);
                     Console.Write("yo");
                 }
                 catch (Exception ex)
@@ -89,7 +104,7 @@ namespace tf_grafos
                             aux = dados[2].Split(':');
                             auxTime = new TimeSpan(int.Parse(aux[0]), int.Parse(aux[1]), int.Parse(aux[2]));
                             horario = new Horario(id, diaSemana, auxTime);
-                            // arestas.Add(new Aresta(id, diaSemana, horario));
+                            horarios.Add(horario);
                         }
                     }
                 }
@@ -102,6 +117,10 @@ namespace tf_grafos
             {
                 Console.WriteLine("O arquivo " + arquivo + " não foi localizado!");
             }
+        }
+    
+        static void mostrarGrade(){
+
         }
     }
 }

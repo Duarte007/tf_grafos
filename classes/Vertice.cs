@@ -38,14 +38,24 @@ namespace tf_grafos.classes
             this.id = id;
         }
 
-        public List<Aresta> GetArestas()
+        public List<Aresta> getArestas()
         {
             return this.arestas;
         }
 
-        public void SetArestas(Aresta a)
+        public void setAresta(Aresta a)
         {
             arestas.Add(a);
+        }
+
+        public Professor getProfessor()
+        {
+            return this.professor;
+        }
+
+        public Materia getMateria()
+        {
+            return this.materia;
         }
 
         /// <summary>

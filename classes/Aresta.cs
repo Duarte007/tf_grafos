@@ -17,45 +17,51 @@ namespace tf_grafos.classes
             this.verticeFinal = vF;
             this.emUso = false;
         }
-        public int GetCor()
+
+        public Aresta(Horario horario)
+        {
+            this.horario = horario;
+            this.emUso = false;
+        }
+        public int getCor()
         {
             return cor;
         }
 
-        public void SetCor(int cor)
+        public void setCor(int cor)
         {
             this.cor = cor;
         }
 
-        public Vertice GetVerticeInicial()
+        public Vertice getVerticeInicial()
         {
             return this.verticeInicial;
         }
 
-        public void SetVerticeInicial(Vertice v)
+        public void setVerticeInicial(Vertice v)
         {
             this.verticeInicial = v;
         }
 
-        public Vertice GetVerticeFinal()
+        public Vertice getVerticeFinal()
         {
             return this.verticeFinal;
         }
 
-        public void SetVerticeFinal(Vertice v)
+        public void setVerticeFinal(Vertice v)
         {
-            if (v != GetVerticeInicial())
+            if (v != getVerticeInicial())
                 this.verticeFinal = v;
             else
                 this.verticeFinal = null;
         }
 
-        public bool GetEmUso()
+        public bool getEmUso()
         {
             return emUso;
         }
 
-        public void SetEmUso(bool uso)
+        public void setEmUso(bool uso)
         {
             this.emUso = uso;
         }
