@@ -127,6 +127,7 @@ namespace tf_grafos
                 // filtra os vertices que sao materias por semestre
                 Console.WriteLine("============ " + i + "° perido ============\n");
                 List<Vertice> verticeMateriasPeriodo = vertices.FindAll(vertice => vertice.getProfessor() == null && vertice.getMateria().getPeriodo() == i);
+                verticeMateriasPeriodo.Sort((x, y) => x.getArestas()[0].getCor().CompareTo(y.getArestas()[0].getCor()));
                 verticeMateriasPeriodo.ForEach(materiaPeriodo => {
                     String nomeMateria = materiaPeriodo.getMateria().getNome();
                     materiaPeriodo.getArestas().ForEach( aresta => {
