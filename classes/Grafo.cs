@@ -50,7 +50,7 @@ namespace tf_grafos.classes
         }
 
         public void colorirArestas(List<Horario> horarios){
-            Horario horaioDisponivel = null;
+            Horario horaioDisponivel = null, aux = null;
             // percorre os 8 semestres
             for(int i = 1 ; i <= 8 ; i++){
                 // filtra os vertices que sao materias por semestre
@@ -63,8 +63,11 @@ namespace tf_grafos.classes
                         horaioDisponivel = horarios.Find(horario => horario.emUso == false);
                         // esse loop verifica se o horario esta em conflito atraves do professor
                         do {
-                            if(horaioDisponivel.emUso)
-                                horaioDisponivel = horarios.Find(horario => horario.emUso == false);
+                            if(horaioDisponivel.emUso){
+                                aux = horarios.Find(horario => horario.emUso == false);
+                                horaioDisponivel.emUso = false;
+                                horaioDisponivel = aux;
+                            }
                             // percorre as arestas do vertice inicial que é o professor
                             aresta.getVerticeInicial().getArestas().ForEach(aresta => {
                                 if(aresta.getCor() == horaioDisponivel.id){
