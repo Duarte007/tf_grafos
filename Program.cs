@@ -53,7 +53,10 @@ namespace tf_grafos
                                 verticeProfessor = new Vertice(randNum.Next(), professor);
                                 vertices.Add(verticeProfessor);
                             } else {
-                                verticeProfessor = new Vertice(randNum.Next(), professorFiltrado);
+                                verticeProfessor = vertices.Find(vertice => 
+                                    vertice.getProfessor() != null && 
+                                    vertice.getProfessor().getId() == professorFiltrado.getId()
+                                );
                             }
 
                             materia = new Materia(count, nomeMateria, periodo, professor);

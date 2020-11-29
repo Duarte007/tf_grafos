@@ -1,9 +1,9 @@
 banco_de_dados; claudiney; 4
+filosofiaum; gisleula; 1
 atp; soraia; 1
 administração; helvio; 1
 matematica_discreta; deborah; 1
 introducao_à_computação; sandra; 1
-filosofiaum; gisleula; 1
 filosofiadois;gisleula;2
 arquitetura_de_computadores; paulo; 2
 fundamentos_de_sistemas; djavan; 2
