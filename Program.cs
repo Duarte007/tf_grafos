@@ -67,12 +67,10 @@ namespace tf_grafos
                             verticeProfessor.setAresta(aresta);
                             verticeMateria.setAresta(aresta);
                             arestas.Add(aresta);
-                            Console.WriteLine(linha);
                         }
                     }
                     grade = new Grafo(vertices, arestas);
                     grade.colorirArestas(horarios);
-                    Console.Write("yo");
                 }
                 catch (Exception ex)
                 {
@@ -123,7 +121,23 @@ namespace tf_grafos
         }
     
         static void mostrarGrade(){
-
+            String nomeProfessor = "";
+            int idHorario = 0;
+            for(int i = 1 ; i <= 8 ; i++){
+                // filtra os vertices que sao materias por semestre
+                Console.WriteLine("============ " + i + "° perido ============\n");
+                List<Vertice> verticeMateriasPeriodo = vertices.FindAll(vertice => vertice.getProfessor() == null && vertice.getMateria().getPeriodo() == i);
+                verticeMateriasPeriodo.ForEach(materiaPeriodo => {
+                    String nomeMateria = materiaPeriodo.getMateria().getNome();
+                    materiaPeriodo.getArestas().ForEach( aresta => {
+                        nomeProfessor = aresta.getVerticeInicial().getProfessor().getNome();
+                        idHorario = aresta.getCor();
+                    });
+                    Horario horario = horarios.Find(horario => horario.id == idHorario);
+                    Console.WriteLine("Materia: {0} | Professor: {1} | Horario: {2} - {3}", nomeMateria, nomeProfessor, horario.diaSemana, horario.horario);
+                });
+                Console.WriteLine("\n");
+            }
         }
     }
 }
